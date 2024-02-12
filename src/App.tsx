@@ -110,7 +110,7 @@ function App() {
   const { mutate } = useMutation({
     mutationFn: async () => {
       setIsTraining(true);
-      const res = await new Promise<boolean>((resolve) => {
+      await new Promise<boolean>((resolve) => {
         setTimeout(() => {
           train_agent(Q.current, agentParams, environmentParams);
           resolve(true);
