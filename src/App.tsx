@@ -107,10 +107,10 @@ function App() {
   const [isTraining, setIsTraining] = useState(false);
   // const [isRunning, setIsRunning] = useState(false);
 
-  const { mutate, isSuccess } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: async () => {
       setIsTraining(true);
-      const res = await new Promise<boolean>((resolve, reject) => {
+      const res = await new Promise<boolean>((resolve) => {
         setTimeout(() => {
           train_agent(Q.current, agentParams, environmentParams);
           resolve(true);
@@ -324,7 +324,7 @@ function App() {
                   isBoost(x, y, environmentParams) && "boost"
                 }
             `}
-                onClick={(e) => {
+                onClick={() => {
                   if (!isRunning) {
                     const index = environmentParams.obstacles
                       .map((o) => o.toString())
@@ -346,7 +346,7 @@ function App() {
                         });
                   }
                 }}
-                onDoubleClick={(e) => {
+                onDoubleClick={() => {
                   if (!isRunning) {
                     const index = environmentParams.boosts
                       .map((o) => o.toString())
