@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import "./App.css";
@@ -13,11 +13,11 @@ import {
   train_agent,
 } from "./qlearning";
 import {
-  useQuery,
+
   useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
+
+
+
 } from "@tanstack/react-query";
 
 const isGoal = (
@@ -314,7 +314,7 @@ function App() {
 
       <div className="grid-container">
         {[...Array(environmentParams.grid_size[0]).keys()].map((y) => (
-          <div className="grid-row">
+          <div className="grid-row" key={y}>
             {[...Array(environmentParams.grid_size[1]).keys()].map((x) => (
               <div
                 key={"" + x + "" + y}
